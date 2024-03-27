@@ -11,7 +11,7 @@ class ProfilesController extends Controller
     {
         $user = User::findOrFail($user);
         
-        return view('dashboard', [
+        return view('profiles.index', [
             'user' => $user, //variable yg akan dipakai di blade php
         ]);
     }

@@ -7,7 +7,10 @@
             <img class="rounded-circle" src="https://winaero.com/blog/wp-content/uploads/2019/09/Chrome-Incognito-Mode-Icon-256.png" style="height: 150px" alt="" srcset="">
         </div>
         <div class="col-9">
-            <div><h1>{{ $user->username }}</h1></div>
+            <div class="d-flex justify-content-between align-items-baseline">
+                <h1>{{ $user->username }}</h1>
+                <a href="#">Add New Post</a>
+            </div>
             <div class="d-flex">
                 {{-- Spacing - Padding end or right --}}
                 <div class="pe-3"><strong>153</strong> posts</div>
