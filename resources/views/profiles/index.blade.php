@@ -9,11 +9,11 @@
         <div class="col-9">
             <div class="d-flex justify-content-between align-items-baseline">
                 <h1>{{ $user->username }}</h1>
-                <a href="#">Add New Post</a>
+                <a href="/p/create">Add New Post</a>
             </div>
             <div class="d-flex">
                 {{-- Spacing - Padding end or right --}}
-                <div class="pe-3"><strong>153</strong> posts</div>
+                <div class="pe-3"><strong>{{ $user->posts->count() }}</strong> posts</div>
                 <div class="pe-3"><strong>23k</strong> followers</div>
                 <div class="pe-3"><strong>212</strong> following</div>
             </div>
@@ -22,16 +22,14 @@
             <div><a href="#">{{ $user->profile->url }}</a></div>
         </div>
     </div>
-    <div class="row pt-4">
-        <div class="col-4">
-            <img src="https://cdn-cooko.nitrocdn.com/dlaHYojSdUILBDieEoKhuePRMJCdRncv/assets/static/optimized/rev-7800a50/www.apertureadventure.com/wp-content/uploads/2022/12/a70f0d10e86968d32619793693c30ff9.layers-of-rolling-sand-at-white-sands.jpg" alt="" class="w-100">
+    <div class="row pt-5">
+        @foreach ($user->posts as $posts)
+        <div class="col-4 pb-4">
+            <a href="/p/{{ $posts->id }}">
+                <img src="/storage/{{ $posts->image }}" alt="" class="w-100">
+            </a>
         </div>
-        <div class="col-4">
-            <img src="https://cdn-cooko.nitrocdn.com/dlaHYojSdUILBDieEoKhuePRMJCdRncv/assets/static/optimized/rev-7800a50/www.apertureadventure.com/wp-content/uploads/2022/12/a70f0d10e86968d32619793693c30ff9.layers-of-rolling-sand-at-white-sands.jpg" alt="" class="w-100">
-        </div>
-        <div class="col-4">
-            <img src="https://cdn-cooko.nitrocdn.com/dlaHYojSdUILBDieEoKhuePRMJCdRncv/assets/static/optimized/rev-7800a50/www.apertureadventure.com/wp-content/uploads/2022/12/a70f0d10e86968d32619793693c30ff9.layers-of-rolling-sand-at-white-sands.jpg" alt="" class="w-100">
-        </div>
+        @endforeach
     </div>
 </div>
 @endsection
