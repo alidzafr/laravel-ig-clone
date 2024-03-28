@@ -12,6 +12,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Route::get('/dashboard', [App\Http\Controllers\ProfilesController::class, 'index'])->name('profile.index');
 Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'index'])->name('profile.index');
+Route::get('/profile/{user}/edit', [App\Http\Controllers\ProfilesController::class, 'edit'])->name('profile.edit');
+Route::patch('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'update'])->name('profile.update');
 
 Route::get('/p/create', [App\Http\Controllers\PostsController::class, 'create'])->name('posts.create');
 Route::get('/p/{post}', [App\Http\Controllers\PostsController::class, 'show'])->name('posts.show');
