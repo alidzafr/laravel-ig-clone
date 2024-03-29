@@ -15,6 +15,9 @@ class Profile extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
+
+    protected $guarded = [];
+
     public function user()
     {
         return $this->belongsTo(User::class);
