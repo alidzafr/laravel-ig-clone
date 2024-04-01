@@ -4,9 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-3 p-3">
-            <img class="rounded-circle" src="/storage/{{ $user->profile->image }}" style="height: 175px" alt="" srcset="">
+            <img class="rounded-circle" src="{{ $user->profile->profileImage() }}" style="height: 175px" alt="" srcset="">
         </div>
-        <div class="col-9">
+        <div class="col-8">
             <div class="d-flex justify-content-between align-items-baseline">
                 <h1>{{ $user->username }}</h1>
                 <a href="/p/create">Add New Post</a>

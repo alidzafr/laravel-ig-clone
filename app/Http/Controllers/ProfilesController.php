@@ -38,22 +38,22 @@ class ProfilesController extends Controller
             'image' => ''
         ]);
         
+        // If user replacing image
         if (request('image')) {
             $imagePath = request('image')->store('profile', 'public');
             
+            // crop & resize image
             // configure with favored image driver (gd by default)
             Image::configure(['driver' => 'imagick']);
             $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
             $image->save();
+
+            $imageArray = ['image' => $imagePath];
         }
-        // dd(array_merge(
-        //     $data,
-        //     ['image' => $imagePath]
-        // ));
         
         auth()->user()->profile->update(array_merge(
             $data,
-            ['image' => $imagePath]
+            $imageArray ?? [] //if user hasn't replace image, use an empty array instead
         ));
 
         return redirect("/profile/{$user->id}");
