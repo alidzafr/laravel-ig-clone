@@ -11,7 +11,12 @@
                 <h1>{{ $user->username }}</h1>
                 <a href="/p/create">Add New Post</a>
             </div>
+
+            {{-- autorize profile - hanya user owner yg bisa edit profile --}}
+            @can('update', $user->profile)
             <a href="/profile/{{ $user->id }}/edit">Edit Profile</a>
+            @endcan
+            
             <div class="d-flex">
                 {{-- Spacing - Padding end or right --}}
                 <div class="pe-3"><strong>{{ $user->posts->count() }}</strong> posts</div>
