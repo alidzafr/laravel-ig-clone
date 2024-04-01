@@ -3,8 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-3 p-5">
-            <img class="rounded-circle" src="https://winaero.com/blog/wp-content/uploads/2019/09/Chrome-Incognito-Mode-Icon-256.png" style="height: 150px" alt="" srcset="">
+        <div class="col-3 p-3">
+            <img class="rounded-circle" src="/storage/{{ $user->profile->image }}" style="height: 175px" alt="" srcset="">
         </div>
         <div class="col-9">
             <div class="d-flex justify-content-between align-items-baseline">

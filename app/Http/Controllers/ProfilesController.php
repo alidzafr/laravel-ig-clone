@@ -51,7 +51,7 @@ class ProfilesController extends Controller
         //     ['image' => $imagePath]
         // ));
         
-        auth()->$user->profile->update(array_merge(
+        auth()->user()->profile->update(array_merge(
             $data,
             ['image' => $imagePath]
         ));
