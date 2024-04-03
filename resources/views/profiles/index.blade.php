@@ -6,15 +6,23 @@
         <div class="col-3 p-3">
             <img class="rounded-circle" src="{{ $user->profile->profileImage() }}" style="height: 175px" alt="" srcset="">
         </div>
-        <div class="col-8">
+        <div class="col-8 pt-5">
             <div class="d-flex justify-content-between align-items-baseline">
-                <h1>{{ $user->username }}</h1>
-                <a href="/p/create">Add New Post</a>
+                <div class="d-flex align-items-center pb-3">
+                    <div class="h4">{{ $user->username }}</div>
+    
+                    {{-- Import button from vue --}}
+                    <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button>
+                </div>
+
+                @can('update', $user->profile)
+                    <a href="/p/create">Add New Post</a>
+                @endcan
             </div>
 
             {{-- autorize profile - hanya user owner yg bisa edit profile --}}
             @can('update', $user->profile)
-            <a href="/profile/{{ $user->id }}/edit">Edit Profile</a>
+                <a href="/profile/{{ $user->id }}/edit">Edit Profile</a>
             @endcan
             
             <div class="d-flex">

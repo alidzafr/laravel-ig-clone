@@ -10,6 +10,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// Follows Button route
+Route::post('follow/{user}', [App\Http\Controllers\FollowsController::class, 'store'])->name('follows.store');
+
 Route::get('/p/create', [App\Http\Controllers\PostsController::class, 'create'])->name('posts.create');
 Route::post('/p', [App\Http\Controllers\PostsController::class, 'store'])->name('posts.store');
 Route::get('/p/{post}', [App\Http\Controllers\PostsController::class, 'show'])->name('posts.show');

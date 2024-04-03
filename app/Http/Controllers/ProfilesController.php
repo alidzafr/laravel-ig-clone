@@ -11,11 +11,11 @@ class ProfilesController extends Controller
 {
     public function index(\App\Models\User $user)
     {
-        // $user = User::findOrFail($user); //tidak digunakan karena sudah menjabarkan model user pada function
+        // If auth user has follows this user then parse bool true
+        $follows = (auth()->user()) ? auth()->user()->following->contains($user->id) : false;
         
-        return view('profiles.index', [
-            'user' => $user, //variable yg akan dipakai di blade php
-        ]);
+        // dd($follows);
+        return view('profiles.index', compact('user', 'follows')); //variable yg akan dipakai di blade php
     }
     
     public function edit(\App\Models\User $user)
