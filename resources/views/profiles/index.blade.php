@@ -27,9 +27,9 @@
             
             <div class="d-flex">
                 {{-- Spacing - Padding end or right --}}
-                <div class="pe-3"><strong>{{ $user->posts->count() }}</strong> posts</div>
-                <div class="pe-3"><strong>{{ $user->profile->followers->count() }}</strong> followers</div>
-                <div class="pe-3"><strong>{{ $user->following->count() }}</strong> following</div>
+                <div class="pe-3"><strong>{{ $postCount }}</strong> posts</div>
+                <div class="pe-3"><strong>{{ $followerCount }}</strong> followers</div>
+                <div class="pe-3"><strong>{{ $followingCount }}</strong> following</div>
             </div>
             <div class="pt-4 fw-bold">{{ $user->profile->title }}</div>
             <div>{{ $user->profile->description }}</div>

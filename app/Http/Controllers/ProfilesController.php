@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Intervention\Image\ImageManagerStatic as Image;
 
 
@@ -14,8 +15,19 @@ class ProfilesController extends Controller
         // If auth user has follows this user then parse bool true
         $follows = (auth()->user()) ? auth()->user()->following->contains($user->id) : false;
         
+        $postCount = Cache::remember('count.posts.' . $user->id, now()->addSeconds(30), function () use ($user) {
+            return $user->posts->count();
+        });
+
+        $followerCount = Cache::remember('count.followers.' . $user->id, now()->addSeconds(30), function () use ($user) {
+            return $user->profile->followers->count();
+        });
+
+        $followingCount = Cache::remember('count.following.' . $user->id, now()->addSeconds(30), function () use ($user) {
+            return $user->following->count();
+        });
         // dd($follows);
-        return view('profiles.index', compact('user', 'follows')); //variable yg akan dipakai di blade php
+        return view('profiles.index', compact('user', 'follows', 'postCount', 'followerCount', 'followingCount')); //variable yg akan dipakai di blade php
     }
     
     public function edit(\App\Models\User $user)
