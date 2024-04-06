@@ -1,12 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Mail\NewUserWelcomeMail;
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
 Auth::routes();
+
+Route::get('/email', function () {
+    return new NewUserWelcomeMail();
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
